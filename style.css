@@ -1,0 +1,826 @@
+/* ===================================================
+   SIRUS ART CAFE — COMPLETE STYLESHEET
+   Coffee Theme · Artistic Typography · Scroll Layout
+   =================================================== */
+
+/* ---------- TOKENS ---------- */
+:root {
+  --coffee-outer: #2C1508;
+  --coffee-dark: #1A0C04;
+  --coffee-mid: #5C2E0A;
+  --coffee-light: #8B4513;
+  --cream: #F5EDE3;
+  --cream-deep: #EAD9C5;
+  --white: #ffffff;
+  --text-brown: #2C1508;
+  --text-muted: #8B6A52;
+  --text-on-dark: rgba(255, 255, 255, 0.75);
+
+  --font-artistic: 'Cinzel Decorative', serif;
+  --font-display: 'Playfair Display', serif;
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-ui: 'Inter', sans-serif;
+
+  --radius-frame: clamp(20px, 4vw, 40px);
+  --shadow-frame: 0 40px 100px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- RESET ---------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-ui);
+  background: var(--coffee-dark);
+  color: var(--white);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: var(--font-ui);
+}
+
+/* ===================================================
+   PAGE WRAPPER
+   =================================================== */
+.page-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(6px, 1.5vw, 16px);
+}
+
+/* ---------- FRAME ---------- */
+.frame {
+  width: 100%;
+  max-width: 1500px;
+  height: 100%;
+  background: var(--cream);
+  border-radius: var(--radius-frame);
+  padding: clamp(4px, 0.6vw, 8px);
+  position: relative;
+  box-shadow: var(--shadow-frame);
+}
+
+.app-container {
+  width: 100%;
+  height: 100%;
+  border-radius: calc(var(--radius-frame) - clamp(4px, 0.6vw, 8px));
+  background: radial-gradient(ellipse at 50% top, var(--coffee-mid) 0%, var(--coffee-dark) 80%);
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ===================================================
+   FLOATING TEA IMAGE (app-container child, not in hero)
+   =================================================== */
+.floating-tea {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Removed transform: translate(-50%, -50%); so GSAP pixel transforms don't overwrite the matrix */
+  width: clamp(180px, 28vw, 420px);
+  height: auto;
+  z-index: 500;
+  pointer-events: none;
+  filter: drop-shadow(0 clamp(8px, 2vw, 30px) clamp(16px, 4vw, 60px) rgba(0, 0, 0, 0.5)) drop-shadow(0 10px 20px rgba(196, 112, 63, 0.2));
+  will-change: transform;
+}
+
+/* ===================================================
+   HERO SCREEN
+   =================================================== */
+.hero-screen {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  /* NO overflow:hidden — so tea can cross section boundary */
+}
+
+/* ---------- TOP CUTOUT ---------- */
+.top-cutout {
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--cream);
+  height: clamp(32px, 5vw, 50px);
+  padding: 0 clamp(16px, 4vw, 56px);
+  border-bottom-left-radius: clamp(16px, 2.5vw, 26px);
+  border-bottom-right-radius: clamp(16px, 2.5vw, 26px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.top-cutout::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: clamp(-18px, -2vw, -26px);
+  width: clamp(18px, 2vw, 26px);
+  height: clamp(18px, 2vw, 26px);
+  background: transparent;
+  border-top-right-radius: clamp(18px, 2vw, 26px);
+  box-shadow: 12px -12px 0 0 var(--cream);
+}
+
+.top-cutout::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: clamp(-18px, -2vw, -26px);
+  width: clamp(18px, 2vw, 26px);
+  height: clamp(18px, 2vw, 26px);
+  background: transparent;
+  border-top-left-radius: clamp(18px, 2vw, 26px);
+  box-shadow: -12px -12px 0 0 var(--cream);
+}
+
+.logo {
+  font-family: var(--font-artistic);
+  font-weight: 700;
+  font-size: clamp(0.65rem, 1.8vw, 1.1rem);
+  color: var(--text-brown);
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* ---------- BOTTOM CUTOUT (scroll cue) ---------- */
+.bottom-cutout {
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--cream);
+  height: clamp(30px, 4.5vw, 46px);
+  width: clamp(70px, 10vw, 110px);
+  border-top-left-radius: clamp(14px, 2vw, 22px);
+  border-top-right-radius: clamp(14px, 2vw, 22px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  z-index: 100;
+  cursor: pointer;
+  color: var(--text-brown);
+  transition: 0.3s ease;
+}
+
+.bottom-cutout:hover {
+  background: var(--cream-deep);
+}
+
+.bottom-cutout::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -14px;
+  width: 14px;
+  height: 14px;
+  background: transparent;
+  border-bottom-right-radius: 14px;
+  box-shadow: 7px 7px 0 0 var(--cream);
+}
+
+.bottom-cutout::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: -14px;
+  width: 14px;
+  height: 14px;
+  background: transparent;
+  border-bottom-left-radius: 14px;
+  box-shadow: -7px 7px 0 0 var(--cream);
+}
+
+.scroll-arrow {
+  animation: bounceDown 1.6s ease-in-out infinite;
+  width: clamp(12px, 1.8vw, 18px);
+  height: clamp(12px, 1.8vw, 18px);
+}
+
+@keyframes bounceDown {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+.scroll-label {
+  font-size: clamp(0.4rem, 0.9vw, 0.55rem);
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  line-height: 1;
+}
+
+
+/* ---------- NAVIGATION ---------- */
+.nav {
+  position: absolute;
+  top: clamp(16px, 4.5vw, 44px);
+  left: 0;
+  width: 100%;
+  padding: 0 clamp(14px, 5vw, 80px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 80;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 2.5vw, 36px);
+}
+
+.nav a {
+  font-size: clamp(0.55rem, 1.4vw, 0.82rem);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+
+.nav a:hover {
+  opacity: 0.65;
+}
+
+.nav a.active {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  padding: clamp(3px, 0.6vw, 6px) clamp(8px, 1.5vw, 18px);
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* ===================================================
+   ★ HERO BACKGROUND TEXT ★
+   =================================================== */
+
+.hero-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.bg-text {
+  position: absolute;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(90px, 22vw, 300px);
+  font-weight: 900;
+  letter-spacing: clamp(24px, 9vw, 100px);
+  color: var(--white);
+  opacity: 1; /* Pure white requested */
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
+  margin: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* ---------- LEFT HERO TEXT ---------- */
+.left-content {
+  position: absolute;
+  left: 5%;
+  bottom: 15%;
+  max-width: clamp(100px, 22vw, 300px);
+  z-index: 40;
+}
+
+.hero-sub.tagline {
+  font-family: var(--font-heading);
+  font-size: clamp(12px, 2vw, 18px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+/* ===================================================
+   WAITER + MENU SECTION (merged)
+   =================================================== */
+.waiter-section {
+  background: transparent;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+/* Large background food name text */
+.food-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(60px, 18vw, 220px);
+  font-weight: 900;
+  color: var(--white);
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1;
+  text-transform: uppercase;
+  letter-spacing: clamp(8px, 3vw, 30px);
+  transition: opacity 0.5s ease;
+}
+
+.food-bg-text.visible {
+  opacity: 0.06;
+}
+
+.waiter-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vw, 40px);
+  position: relative;
+  z-index: 2;
+}
+
+.waiter-img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+}
+
+.waiter-front-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20; /* Keep higher than food-carousel which is 10 */
+  pointer-events: none;
+}
+
+.waiter-front {
+  /* Hide drop shadow on front layer so it doesn't build up unnaturally */
+  filter: none;
+  /* Mask out the right side (where the plate is) so you can see the carousel on the bottom plate layer.
+     The gradient gives a slightly feathered edge at his wrist for a seamless visual blend. */
+  -webkit-mask-image: linear-gradient(to right, black 55%, transparent 63%);
+  mask-image: linear-gradient(to right, black 55%, transparent 63%);
+}
+
+/* ===================================================
+   FOOD CAROUSEL (overlaid on waiter section)
+   =================================================== */
+.food-carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.food-track {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  align-items: center;
+  gap: clamp(20px, 4vw, 50px);
+  pointer-events: all;
+  cursor: grab;
+  will-change: transform;
+  touch-action: pan-y;
+}
+
+.food-track:active {
+  cursor: grabbing;
+}
+
+/* Individual food item */
+.food-item {
+  flex-shrink: 0;
+  width: clamp(100px, 18vw, 180px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(6px, 1vw, 12px);
+  will-change: transform;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: filter 0.3s ease;
+}
+
+.food-item img {
+  width: 100%;
+  height: clamp(90px, 16vw, 160px);
+  object-fit: contain;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.5));
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.food-label {
+  font-family: var(--font-heading);
+  font-size: clamp(0.6rem, 1.2vw, 0.9rem);
+  font-weight: 600;
+  color: var(--cream);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.food-item.is-center .food-label {
+  opacity: 1;
+}
+
+/* Swipe hint */
+.swipe-hint {
+  font-family: var(--font-ui);
+  font-size: clamp(0.45rem, 0.9vw, 0.65rem);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: pulseHint 2s ease-in-out infinite;
+  margin-top: clamp(8px, 1.5vw, 16px);
+  pointer-events: none;
+}
+
+@keyframes pulseHint {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+}
+
+/* ===================================================
+   REFINEMENT QUERIES
+   =================================================== */
+
+@media (max-width: 768px) {
+  .bg-text {
+    font-size: clamp(60px, 22vw, 140px);
+    letter-spacing: clamp(5px, 4vw, 30px);
+  }
+
+  .floating-tea {
+    width: clamp(140px, 40vw, 260px);
+  }
+
+  .left-content {
+    position: absolute;
+    bottom: 15%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    max-width: none;
+  }
+
+  .hero-sub.tagline {
+    text-align: center;
+    margin: 0;
+  }
+
+  .food-track {
+    gap: 16px;
+  }
+
+  .food-item {
+    width: clamp(80px, 25vw, 140px);
+  }
+
+  .food-item img {
+    height: clamp(70px, 22vw, 130px);
+  }
+
+  .food-bg-text {
+    font-size: clamp(40px, 16vw, 120px);
+  }
+}
+
+/* ===================================================
+   SHATTERED MOOD BOARD OVERLAY (SANDWICH MENU)
+   =================================================== */
+.mood-board {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 15; /* Above background/waiter-back, below front mask and carouels */
+}
+
+.huge-comma {
+  position: absolute;
+  font-size: clamp(200px, 40vw, 500px);
+  top: -5%;
+  left: 5%;
+  font-family: Georgia, serif;
+  color: var(--white);
+  opacity: 0.05;
+  user-select: none;
+}
+
+.mood-fragment {
+  position: absolute;
+  pointer-events: auto;
+  opacity: 0; /* Will be set to 1 by GSAP */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: clamp(140px, 20vw, 250px);
+  text-align: center;
+}
+
+.item-name {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  font-size: clamp(0.75rem, 1.2vw, 1.1rem);
+  color: var(--coffee-dark);
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 5px 10px;
+  box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+}
+
+.price-tag {
+  font-family: var(--font-heading), serif;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  margin-top: 10px;
+  color: #ff5252; /* Soft red for pop */
+  font-weight: 900;
+  background: var(--cream);
+  padding: 2px 12px;
+  border-radius: 12px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.desc-tag {
+  font-family: var(--font-heading), serif;
+  font-style: italic;
+  font-size: clamp(0.7rem, 1vw, 0.95rem);
+  margin-top: 6px;
+  color: var(--coffee-dark);
+  font-weight: 600;
+  background: var(--cream-deep); /* Subtle contrasting paper color */
+  padding: 6px 12px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  text-align: center;
+  line-height: 1.3;
+  width: 100%;
+}
+
+
+.mood-arrow-dash {
+  position: absolute;
+  width: clamp(50px, 8vw, 80px);
+  top: 10px;
+  /* Stroke is animated via GSAP */
+}
+
+.arrow-left {
+  right: clamp(-40px, -6vw, -70px);
+  transform: rotate(10deg);
+}
+
+.arrow-right {
+  left: clamp(-40px, -6vw, -70px);
+  transform: rotate(-10deg);
+}
+
+/* ===================================================
+   POSTER MENU BOARD (SANDWICH)
+   =================================================== */
+.poster-container {
+  background-color: #d8c9b3; /* Light tan background */
+  border: clamp(8px, 1.5vw, 14px) solid #c68a53; /* Wooden frame */
+  border-radius: 4px;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.1), 5px 15px 30px rgba(0,0,0,0.5);
+  padding: clamp(10px, 1.5vw, 20px);
+  padding-bottom: 0; /* Let the illustration sit at the bottom */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden; /* For the tablecloth */
+  font-family: 'Kalam', cursive;
+  color: #2b5278; /* Ink blue */
+  height: clamp(260px, 35vw, 360px);
+}
+
+.poster-title {
+  text-align: center;
+  font-size: clamp(1.2rem, 1.8vw, 1.8rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: clamp(8px, 1vw, 15px);
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.poster-list {
+  list-style: none;
+  width: 100%;
+  margin-bottom: clamp(40px, 6vw, 80px);
+}
+
+.poster-list li {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: clamp(4px, 1vw, 8px);
+  font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+}
+
+.poster-item {
+  white-space: nowrap;
+}
+
+.poster-dots {
+  flex-grow: 1;
+  border-bottom: 3px dotted #2b5278;
+  margin: 0 10px;
+  position: relative;
+  top: -8px;
+  opacity: 0.7;
+}
+
+.poster-price {
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+.poster-illustration {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(50px, 12vw, 90px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.tablecloth {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  width: calc(100% + 40px);
+  height: 65%;
+  background-color: #d8c9b3;
+  background-image: conic-gradient(at 50% 50%, #2b5278 90deg, transparent 90deg 180deg, #2b5278 180deg 270deg, transparent 270deg);
+  background-size: clamp(60px, 10vw, 100px) clamp(40px, 6vw, 60px);
+  transform: rotate(-6deg) skewX(-15deg);
+  transform-origin: bottom left;
+  border-top: 5px solid #2b5278;
+}
+
+.coffee-cup {
+  position: relative;
+  z-index: 2;
+  width: clamp(50px, 12vw, 100px);
+  height: clamp(50px, 12vw, 100px);
+  margin-bottom: 5%;
+  margin-right: -30%;
+  transform: rotate(5deg);
+}
+
+/* ===================================================
+   MINIMAL CARD (SHAKES)
+   =================================================== */
+.minimal-card {
+  background: var(--cream);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 40px;
+  padding: clamp(20px, 3vw, 35px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--coffee-dark);
+  font-family: var(--font-ui);
+}
+
+.card-teacup-icon {
+  margin-bottom: 10px;
+  color: var(--text-muted);
+}
+
+.minimal-title {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: clamp(1.1rem, 1.5vw, 1.6rem);
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  color: var(--coffee-dark);
+}
+
+.minimal-divider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.minimal-divider::before,
+.minimal-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.minimal-divider span {
+  padding: 0 10px;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.minimal-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.minimal-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: clamp(0.75rem, 1vw, 0.95rem);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
+}
+
+.minimal-item span:first-child {
+  padding-right: 15px;
+}
+
+.minimal-item span:last-child {
+  font-weight: 600;
+}
+
+.minimal-footer {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 0.55rem;
+  letter-spacing: 4px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}

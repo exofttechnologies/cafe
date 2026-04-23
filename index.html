@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sirus Art Cafe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;700;800;900&family=Kalam:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ═══ PAGE WRAPPER ═══ -->
+  <div class="page-wrapper">
+    <div class="frame">
+      <!-- ═══ FLOATING TEA IMAGE (lives outside scrolling container to avoid ANY clipping) ═══ -->
+      <img src="images/cafe-bg.png" alt="Sirus Art Cafe signature drink" class="floating-tea" id="tea-img">
+      
+      <div class="app-container">
+
+        <!-- ═══ HERO SCREEN ═══ -->
+        <section class="hero-screen" id="home">
+
+          <!-- Top Cutout: Logo -->
+          <div class="top-cutout">
+            <div class="logo">Sirus Art Cafe.</div>
+          </div>
+
+          <!-- Bottom Cutout scroll indicator -->
+          <div class="bottom-cutout" id="scroll-down-cue">
+            <svg class="scroll-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
+            <span class="scroll-label">Scroll</span>
+          </div>
+
+          <!-- Navigation -->
+          <nav class="nav">
+            <div class="nav-left">
+              <a href="#home" class="active">Home</a>
+              <a href="#about">About Us</a>
+            </div>
+            <div class="nav-right">
+              <a href="#menu">Menu</a>
+              <a href="#contact">Contact Us</a>
+            </div>
+          </nav>
+
+          <!-- CENTER GROUP (text only, tea is outside) -->
+          <div class="hero-center">
+            <h1 id="heroText" class="bg-text">SIRUS</h1>
+          </div>
+
+          <!-- Left side text -->
+          <div class="left-content">
+            <p class="hero-sub tagline">Artisanal blends.<br>Timeless moments.</p>
+          </div>
+
+        </section><!-- /hero-screen -->
+
+        <!-- ═══ WAITER + MENU SECTION (merged) ═══ -->
+        <section class="waiter-section" id="about">
+          
+          <!-- ================= SHATTERED MOOD BOARDS ================= -->
+          <div class="mood-boards-container">
+            
+            <!-- 1. TEA (Kerala Paal Chaaya) -->
+            <div class="mood-board sandwich-layout" data-for="TEA">
+              <div class="huge-comma">&ldquo;</div>
+
+              <div class="mood-fragment side-left" style="top: 10%; left: 5%; transform: rotate(-4deg); width: clamp(160px, 22vw, 290px); z-index: 2;">
+                <svg class="mood-arrow-dash arrow-left" viewBox="0 0 100 50">
+                  <path d="M0,25 Q50,0 100,25" fill="none" stroke="var(--cream)" stroke-width="1.5" stroke-dasharray="4 2"/>
+                </svg>
+                <span class="item-name" style="font-size: clamp(0.75rem, 1.1vw, 1.1rem);">FINE TEA DUST</span>
+                <div class="desc-tag">High-quality "Dust" grade tea from Munnar for that deep, reddish-brown color.</div>
+              </div>
+
+              <div class="mood-fragment side-right" style="top: 25%; right: 4%; transform: rotate(3deg); width: clamp(160px, 22vw, 290px); z-index: 2;">
+                <svg class="mood-arrow-dash arrow-right" viewBox="0 0 100 50">
+                  <path d="M100,25 Q50,0 0,25" fill="none" stroke="var(--cream)" stroke-width="1.5" stroke-dasharray="4 2"/>
+                </svg>
+                <span class="item-name" style="font-size: clamp(0.75rem, 1.1vw, 1.1rem);">FRESH MILK</span>
+                <div class="desc-tag">Always full-fat and boiled to a creamy consistency.</div>
+              </div>
+
+              <div class="mood-fragment side-left" style="top: 45%; left: 2%; transform: rotate(5deg); width: clamp(160px, 22vw, 290px); z-index: 2;">
+                <svg class="mood-arrow-dash arrow-left" viewBox="0 0 100 50">
+                  <path d="M0,25 Q50,0 100,25" fill="none" stroke="var(--cream)" stroke-width="1.5" stroke-dasharray="4 2"/>
+                </svg>
+                <span class="item-name" style="font-size: clamp(0.75rem, 1.1vw, 1.1rem);">THE SPICE TRIO</span>
+                <div class="desc-tag">Crushed Ginger, Green Cardamom, and a single Clove.</div>
+              </div>
+
+              <div class="mood-fragment side-right" style="top: 60%; right: 0%; transform: rotate(-5deg); width: clamp(160px, 22vw, 290px); z-index: 2;">
+                <svg class="mood-arrow-dash arrow-right" viewBox="0 0 100 50">
+                  <path d="M100,25 Q50,0 0,25" fill="none" stroke="var(--cream)" stroke-width="1.5" stroke-dasharray="4 2"/>
+                </svg>
+                <span class="item-name" style="font-size: clamp(0.75rem, 1.1vw, 1.1rem);">WATER & SUGAR</span>
+                <div class="desc-tag">Exactly 1:1.5 ratio, served sweet to balance the bitterness of the strong brew.</div>
+              </div>
+
+              <!-- Scrapbook photos -->
+              <div class="mood-fragment side-left photo-fragment" style="top: 65%; left: 16%; transform: rotate(-8deg); z-index: 1;">
+                 <img src="images/teashopill.jpeg" alt="Teashop illustration" style="width: clamp(100px, 15vw, 180px); border: clamp(2px, 0.3vw, 3px) solid white; box-shadow: 2px 4px 10px rgba(0,0,0,0.5); border-radius: 2px;" />
+              </div>
+              <div class="mood-fragment side-right photo-fragment" style="top: 10%; right: 18%; transform: rotate(10deg); z-index: 1;">
+                 <img src="images/teaillustrator.jpeg" alt="Tea artwork" style="width: clamp(90px, 12vw, 150px); border: clamp(2px, 0.3vw, 3px) solid white; box-shadow: 2px 4px 10px rgba(0,0,0,0.5); border-radius: 2px;" />
+              </div>
+
+            </div>
+
+            <!-- 2. SANDWICHES (Poster version) -->
+            <div class="mood-board sandwich-layout" data-for="SANDWICH" style="opacity: 0; pointer-events: none;">
+              
+              <div class="mood-fragment poster-wrapper side-left" style="top: 15%; left: 5%; transform: rotate(-4deg); width: clamp(200px, 24vw, 280px); z-index: 5;">
+                <div class="poster-container">
+                   <h2 class="poster-title">SANDWICH MENU</h2>
+                   <ul class="poster-list">
+                      <li>
+                         <span class="poster-item">Club Classic Veg</span>
+                         <span class="poster-dots"></span>
+                         <span class="poster-price">120</span>
+                      </li>
+                      <li>
+                         <span class="poster-item">Club Classic Chicken</span>
+                         <span class="poster-dots"></span>
+                         <span class="poster-price">140</span>
+                      </li>
+                      <li>
+                         <span class="poster-item">Club Zinger</span>
+                         <span class="poster-dots"></span>
+                         <span class="poster-price">160</span>
+                      </li>
+                      <li>
+                         <span class="poster-item">Sirus Special</span>
+                         <span class="poster-dots"></span>
+                         <span class="poster-price">250</span>
+                      </li>
+                   </ul>
+                   <div class="poster-illustration">
+                      <div class="tablecloth"></div>
+                      <svg class="coffee-cup" viewBox="0 0 100 100">
+                        <defs>
+                          <clipPath id="cup-clip">
+                             <path d="M 30,40 L 32,80 C 32,95 68,95 68,80 L 70,40 Z"/>
+                          </clipPath>
+                        </defs>
+                        <!-- Cup handle -->
+                        <path d="M 68,55 C 88,50 88,80 68,75" fill="none" stroke="#2b5278" stroke-width="6" stroke-linecap="round"/>
+                        <!-- Cup body -->
+                        <path d="M 30,40 L 32,80 C 32,95 68,95 68,80 L 70,40 Z" fill="#d2c1aa" stroke="#2b5278" stroke-width="4" stroke-linejoin="round"/>
+                        <!-- Cup stripes clipped to body -->
+                        <g clip-path="url(#cup-clip)">
+                           <line x1="40" y1="40" x2="42" y2="90" stroke="#2b5278" stroke-width="3"/>
+                           <line x1="50" y1="40" x2="50" y2="90" stroke="#2b5278" stroke-width="3"/>
+                           <line x1="60" y1="40" x2="58" y2="90" stroke="#2b5278" stroke-width="3"/>
+                        </g>
+                        <!-- Top opening -->
+                        <ellipse cx="50" cy="40" rx="20" ry="7" fill="#d2c1aa"/>
+                        <!-- Coffee liquid -->
+                        <ellipse cx="50" cy="41" rx="17" ry="5" fill="#2b5278"/>
+                        <ellipse cx="50" cy="40" rx="20" ry="7" fill="none" stroke="#2b5278" stroke-width="4"/>
+                      </svg>
+                   </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- 3. SHAKES -->
+            <div class="mood-board" data-for="SHAKES" style="opacity: 0; pointer-events: none;">
+               <div class="mood-fragment side-right" style="top: 10%; right: 2%; width: clamp(200px, 22vw, 280px); z-index: 5;">
+                  <div class="minimal-card">
+                     <div class="card-teacup-icon">
+                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+                     </div>
+                     <h2 class="minimal-title">SHAKES</h2>
+                     <div class="minimal-divider">
+                        <span>PRICES</span>
+                     </div>
+                     
+                     <div class="minimal-list">
+                       <div class="minimal-item"><span>Chikko Shake</span><span>₹80</span></div>
+                       <div class="minimal-item"><span>Mango Shake</span><span>₹90</span></div>
+                       <div class="minimal-item"><span>Shamam Shake</span><span>₹80</span></div>
+                       <div class="minimal-item"><span>Pappaya Shake</span><span>₹90</span></div>
+                       <div class="minimal-item"><span>Strawberry Shake</span><span>₹80</span></div>
+                       <div class="minimal-item"><span>Avocado Shake</span><span>₹90</span></div>
+                     </div>
+                     
+                     <div class="minimal-footer">
+                       SIRUS ART CAFE
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- 4. MOMOS -->
+            <div class="mood-board" data-for="MOMOS" style="opacity: 0; pointer-events: none;">
+              <div class="mood-fragment side-left" style="top: 30%; left: 8%; transform: rotate(-5deg);">
+                <span class="item-name">STEAMED CHICKEN MOMOS</span>
+                <div class="price-tag">₹ 110</div>
+              </div>
+              <div class="mood-fragment side-right" style="top: 50%; right: 10%; transform: rotate(4deg);">
+                <span class="item-name">CRISPY FRIED MOMOS</span>
+                <div class="price-tag">₹ 130</div>
+              </div>
+              <svg class="mood-arrow" viewBox="0 0 200 100" style="top: 60%; left: 15%">
+                <path class="arrow-path" d="M10,80 C80,80 100,50 180,20" fill="transparent" stroke="var(--cream)" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+          </div>
+
+          <!-- Waiter image -->
+          <div class="waiter-container">
+            <img src="images/waiter.png" alt="Waiter carrying tea" class="waiter-img">
+          </div>
+
+          <!-- Food carousel overlay on plate area -->
+          <div class="food-carousel" id="menu">
+            <div class="food-track" id="foodTrack">
+              <div class="food-item is-center" data-name="TEA">
+                <!-- Using a fully transparent image placeholder for the tea cup, 
+                     because the GSAP animated floating tea cup will physically sit here. -->
+                <img src="images/cafe-bg.png" alt="Tea" style="opacity: 0;">
+                <span class="food-label">Signature Tea</span>
+              </div>
+              <div class="food-item" data-name="SANDWICH">
+                <img src="images/club-sandwitch.png" alt="Sandwiches">
+                <span class="food-label">Sandwiches</span>
+              </div>
+              <div class="food-item" data-name="SHAKES">
+                <img src="images/shakes.png" alt="Shakes">
+                <span class="food-label">Shakes</span>
+              </div>
+              <div class="food-item" data-name="JUICES">
+                <img src="images/juices.png" alt="Fresh Juices">
+                <span class="food-label">Fresh Juices</span>
+              </div>
+              <div class="food-item" data-name="MOMOS">
+                <img src="images/momos.png" alt="Momos">
+                <span class="food-label">Momos</span>
+              </div>
+            </div>
+            <p class="swipe-hint">← Swipe to browse →</p>
+          </div>
+
+          <!-- Waiter Front body overlay (creates occlusion so sliding food hides behind his chest) -->
+          <div class="waiter-container waiter-front-wrapper">
+             <img src="images/waiter.png" alt="" class="waiter-img waiter-front">
+          </div>
+
+
+        </section><!-- /about+menu -->
+
+      </div><!-- /app-container -->
+    </div><!-- /frame -->
+  </div><!-- /page-wrapper -->
+
+  <!-- GSAP CDNs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
